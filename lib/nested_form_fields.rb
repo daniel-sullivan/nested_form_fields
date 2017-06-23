@@ -78,7 +78,7 @@ module ActionView::Helpers
         output << nested_fields_wrapper(association_name, options[:wrapper_tag], options[:legend], wrapper_options) do
           new_block = fields_for_nested_model("#{name}[#{options[:child_index] || nested_child_index(name)}]", child, options, block)
           # do substitution in user defined blocks with the current index allows JS functions to have proper references
-          new_block.gsub('__nested_field_for_replace_with_index__', index.to_s).html_safe
+          new_block.gsub!('__nested_field_for_replace_with_index__', index.to_s).html_safe
         end
       end
 
